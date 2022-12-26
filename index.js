@@ -1,4 +1,5 @@
 const { ethers } = require("ethers");
+const { getSystemErrorMap } = require("util");
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 
@@ -18,11 +19,20 @@ async function bet() {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
         const contract = new ethers.Contract(address, abi, signer)
-        try {
-            //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
-            await contract.place_bet(1, 1, { value: ethers.utils.parseEther("1") });
-        } catch (error) {
-            console.log(error);
+
+        const range = getRange()
+        //Only if there is a bet setting
+        if (range != 0) {
+            console.log(range);
+            console.log(betValue);
+
+            try {
+                //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
+                // number, range
+                await contract.place_bet(betValue, range, { value: ethers.utils.parseEther("1") });
+            } catch (error) {
+                console.log(error);
+            }
         }
 
     }
