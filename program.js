@@ -1,3 +1,4 @@
+const { stringify } = require("querystring");
 
 var betType = 0;
 var betValue = 0;
@@ -8,6 +9,54 @@ var betValue = 0;
 4: lower(1) or middle(2) or higher(3)
 */
 
+function updateBet() {
+    message = "";
+    if (betType == 0) {
+        message = "No bet!";
+    }
+    else if (betType == 1) {
+        message = "Mode: Lower or Higher bet on: ";
+        if (betValue == 1) {
+            message += "lower";
+        }
+        else {
+            message += "higher";
+        }
+    }
+    else if (betType == 2) {
+        message = "Mode: Black or Red bet on: ";
+        if (betValue == 1) {
+            message += "black";
+        }
+        else {
+            message += "red";
+        }
+    }
+    else if (betType == 3) {
+        message = "Mode: Odd or Even bet on: ";
+        if (betValue == 1) {
+            message += "Odd";
+        }
+        else {
+            message += "Even";
+        }
+    }
+    else if (betType == 4) {
+        message = "Mode: lower, middle, higher bet on: ";
+        if (betValue == 1) {
+            message += "lower";
+        }
+        else if (betValue == 2) {
+            message += "middle";
+        }
+        else {
+            message += "higher";
+        }
+    }
+
+    document.getElementById("betType").textContent = message;
+
+}
 
 
 function lowerOrHigher(higher) {
@@ -20,6 +69,7 @@ function lowerOrHigher(higher) {
         console.log("Higher");
         betValue = 2;
     }
+    updateBet();
 }
 
 function blackOrRed(red) {
@@ -32,6 +82,7 @@ function blackOrRed(red) {
         console.log("red");
         betValue = 2;
     }
+    updateBet();
 }
 
 function oddOrEven(odd) {
@@ -44,6 +95,7 @@ function oddOrEven(odd) {
         console.log("odd");
         betValue = 2;
     }
+    updateBet();
 }
 
 function lowerMiddleHigher(num) {
@@ -60,6 +112,7 @@ function lowerMiddleHigher(num) {
         console.log("higher");
         betValue = 3;
     }
+    updateBet();
 }
 
 function getRange() {
