@@ -8,23 +8,29 @@
     <title>Document</title>
 </head>
 
-<body>
-    Hi
+<body bgcolor="grey">
     <button id="connectButton" onclick="bundle.connect()">Connect</button>
-    <br></br>
-    <button onclick="blackOrRed(0)">BLACK or Red</button>
-    <button onclick="blackOrRed(1)">Black or RED</button>
-    <br></br>
-    <button onclick="lowerOrHigher(0)">LOWER or higher</button>
-    <button onclick="lowerOrHigher(1)">Lower or HIGHER</button>
-    <br></br>
-    <button onclick="oddOrEven(0)">ODD or even</button>
-    <button onclick="oddOrEven(1)">odd or EVEN</button>
-    <br></br>
-    <button onclick="lowerMiddleHigher(0)">Lower</button>
-    <button onclick="lowerMiddleHigher(1)">Middle</button>
-    <button onclick="lowerMiddleHigher(2)">Higher</button>
-    <br></br>
+    <br>Click on a field to select this bet</br>
+
+    <img src="roulette_brett.jpeg" alt="Workplace" usemap="#workmap">
+    <map name="workmap">
+        <area shape="rect" coords="490,206,549,234" onclick="blackOrRed(1)"> <!-- rote Fläche-->
+        <area shape="rect" coords="552,206,610,234" onclick="blackOrRed(0)"> <!-- schwarze Fläche-->
+
+        <area shape="rect" coords="367,206,426,234" onclick="lowerOrHigher(0)"> <!-- lower Fläche-->
+        <area shape="rect" coords="676,206,733,234" onclick="lowerOrHigher(1)"> <!-- higher Fläche-->
+
+        <area shape="rect" coords="614,206,672,234" onclick="oddOrEven(0)"> <!-- odd Fläche-->
+        <area shape="rect" coords="429,206,487,234" onclick="oddOrEven(1)"> <!-- even Fläche-->
+
+        <area shape="rect" coords="367,176,487,203" onclick="lowerMiddleHigher(0)"> <!-- lower Fläche-->
+        <area shape="rect" coords="490,176,610,203" onclick="lowerMiddleHigher(1)"> <!-- middle Fläche-->
+        <area shape="rect" coords="614,176,734,203" onclick="lowerMiddleHigher(2)"> <!-- higher Fläche-->
+
+        <area shape="rect" coords="367,38,395,81" onclick="exactNumber(3)"> <!-- 3-->
+        <area shape="rect" coords="398,38,426,81" onclick="exactNumber(6)"> <!-- 6-->
+    </map>
+
 
     <p id="betType">No bet Type</p>
     <button onclick="bundle.bet()">bet</button>

@@ -7,6 +7,7 @@ var betValue = 0;
 2: black(1) or red(2)
 3: odd(1) or even(2)
 4: lower(1) or middle(2) or higher(3)
+5: exact number (1-36)
 */
 
 function updateBet() {
@@ -52,6 +53,10 @@ function updateBet() {
         else {
             message += "higher";
         }
+    }
+    else if (betType == 5) {
+        message = "Mode: exact number bet on: ";
+        message += betValue;
     }
 
     document.getElementById("betType").textContent = message;
@@ -115,12 +120,21 @@ function lowerMiddleHigher(num) {
     updateBet();
 }
 
+function exactNumber(num) {
+    betType = 5;
+    betValue = num
+    updateBet();
+}
+
 function getRange() {
     if (betType >= 1 && betType <= 3) {
         return 2;
     }
     else if (betType == 4) {
         return 3;
+    }
+    else if (betType == 5) {
+        return 36;
     }
     else {
         return 0;
