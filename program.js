@@ -9,6 +9,7 @@ var betValue = 0;
 4: lower(1) or middle(2) or higher(3)
 5: exact number (1-36)
 */
+var address = "0x0000000000000000000000000000000000000000"
 
 function updateBet() {
     message = "";
@@ -124,6 +125,19 @@ function exactNumber(num) {
     betType = 5;
     betValue = num
     updateBet();
+}
+
+
+function random(num) {
+    if (num == 0) { //always
+        address = "0x156B03A252689861E3aC9307f359608720DBF409"
+    }
+    else if (num == 1) { //random
+        address = "0x5dB3eE642937932dC930f588ee128F52A9641eDb"
+    }
+    else if (num == 3) { //offline always win
+        address = "0xED7c57D4049F947D2c31e22Be5DF50d33c603807"
+    }
 }
 
 function getRange() {

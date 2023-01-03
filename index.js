@@ -1,3 +1,4 @@
+const { Console } = require("console");
 const { ethers } = require("ethers");
 const { getSystemErrorMap } = require("util");
 const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -15,9 +16,9 @@ async function connect() {
 
 async function bet() {
     if (typeof window.ethereum !== "undefined") {
-        const address = "0xED7c57D4049F947D2c31e22Be5DF50d33c603807"
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
+        console.log(address)
         const contract = new ethers.Contract(address, abi, signer)
 
         const range = getRange()
@@ -40,7 +41,6 @@ async function bet() {
 
 async function claim() {
     if (typeof window.ethereum !== "undefined") {
-        const address = "0xED7c57D4049F947D2c31e22Be5DF50d33c603807"
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
         const contract = new ethers.Contract(address, abi, signer)
