@@ -26,11 +26,13 @@ async function bet() {
         if (range != 0) {
             console.log(range);
             console.log(betValue);
-
+            var amount = document.getElementById("amount").value;
+            console.log(amount);
+            //amount = "1";
             try {
                 //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
                 // number, range
-                await contract.place_bet(betValue, range, { value: ethers.utils.parseEther("1") });
+                await contract.place_bet(betValue, range, { value: ethers.utils.parseEther(amount) });
             } catch (error) {
                 console.log(error);
             }
