@@ -66,7 +66,7 @@ async function getInfosOfBet() {
         const contract = new ethers.Contract(address, abi, signer)
         try {
             var block = await contract.block_numbers(my_address);
-            block = hexToDecimal(block["_hex"]);
+            //block = hexToDecimal(block["_hex"]);
             var bet_range = await contract.bet_range(my_address);
             bet_range = hexToDecimal(bet_range["_hex"]);
             var bet_number = await contract.bet_numbers(my_address);
@@ -89,6 +89,12 @@ async function getInfosOfBet() {
     }
 }
 
+async function getKeccakHash(block_hash) {
+    var pack = ethers.utils.solidityPack(["string"], [block_hash]);
+    var keccak = ethers.utils.solidityKeccak256(["string"], [pack]);
+    return keccak;
+}
+
 module.exports = {
-    connect, bet, claim, getInfosOfBet,
+    connect, bet, claim, getInfosOfBet, getKeccakHash,
 };

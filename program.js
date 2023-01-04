@@ -1,5 +1,5 @@
 const { stringify } = require("querystring");
-import { Network, Alchemy } from "alchemy-sdk";
+
 
 var betType = 0;
 var betValue = 0;
@@ -139,6 +139,7 @@ function random(num) {
     else if (num == 3) { //offline always win
         address = "0xED7c57D4049F947D2c31e22Be5DF50d33c603807"
     }
+    console.log(address)
 }
 
 function getRange() {
@@ -156,6 +157,8 @@ function getRange() {
     }
 }
 
+
+
 async function checkWin() {
     document.getElementById("checkWin").textContent = "wait, I'm looking if you won";
     var values = await bundle.getInfosOfBet();
@@ -164,9 +167,26 @@ async function checkWin() {
     var betRange = values[1]
     var betNumber = values[2]
     var betAmount = values[3]
+    betBlock = "1D1F45E"
+    const response = await fetch("https://polygon-mumbai.g.alchemy.com/v2/4YSvn6vwg5ZTIx9IV6YVKS3IiJakB-o9", {
+        method: 'POST',
+        // headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json'
+        // },
+        body: `{
+            "jsonrpc":"2.0",
+            "method":"eth_getBlockByNumber",
+            "params":["0x${betBlock}", true],
+            "id":0
+            }`,
+    });
 
-    //get block hash
+    const json = await response.json();
+    var hash = json["result"]["hash"]
+    console.log(hash)
 
-
+    keccak = await bundle.getKeccakHash(hash);
+    console.log(keccak)
 }
 

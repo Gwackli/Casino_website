@@ -9,6 +9,9 @@
 </head>
 
 <body bgcolor="grey">
+    <script src="./dist/bundle.js"></script>
+    <script src="program.js"></script>
+    <script type="module" src="alchemyTest.js"></script>
     <button id="connectButton" onclick="bundle.connect()">Connect</button>
     <br></br>
     <button id="alwaysWin" onclick="random(0)">alwaysWin</button>
@@ -45,8 +48,6 @@
     <button onclick="checkWin()">Did I win?</button>
     <p id="checkWin">I dont know</p>
     <button onclick="bundle.claim()">claim!</button>
-    <script src="./dist/bundle.js"></script>
-    <script src="program.js"></script>
 </body>
 
 
