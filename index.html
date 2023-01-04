@@ -40,10 +40,13 @@
     </map>
 
 
-    <p id="betType">No bet Type</p>
+    <p id="betType">Select a bet</p>
+    <p id="betValue"></p>
+    <br>
+    Amount you want to bet in Matic:
     <input type="number" id="amount" name="Amount in Matic" min="1" max="10" step="0.1" value="1">
     <button onclick="bundle.bet()">bet</button>
-
+    </br>
     <br></br>
     <button onclick="checkWin()">Did I win?</button>
     <p id="checkWin">I dont know</p>

@@ -13,55 +13,57 @@ var betValue = 0;
 var address = "0x0000000000000000000000000000000000000000"
 
 function updateBet() {
-    message = "";
+    messageType = "";
+    messageValue = "Bet on: ";
     if (betType == 0) {
-        message = "No bet!";
+        messageType = "No bet!";
     }
     else if (betType == 1) {
-        message = "Mode: Lower or Higher bet on: ";
+        messageType = "Mode: Lower or Higher";
         if (betValue == 1) {
-            message += "lower";
+            messageValue += "lower";
         }
         else {
-            message += "higher";
+            messageValue += "higher";
         }
     }
     else if (betType == 2) {
-        message = "Mode: Black or Red bet on: ";
+        messageType = "Mode: Black or Red";
         if (betValue == 1) {
-            message += "black";
+            messageValue += "black";
         }
         else {
-            message += "red";
+            messageValue += "red";
         }
     }
     else if (betType == 3) {
-        message = "Mode: Odd or Even bet on: ";
+        messageType = "Mode: Odd or Even";
         if (betValue == 1) {
-            message += "Odd";
+            messageValue += "Odd";
         }
         else {
-            message += "Even";
+            messageValue += "Even";
         }
     }
     else if (betType == 4) {
-        message = "Mode: lower, middle, higher bet on: ";
+        messageType = "Mode: lower, middle, higher";
         if (betValue == 1) {
-            message += "lower";
+            messageValue += "lower";
         }
         else if (betValue == 2) {
-            message += "middle";
+            messageValue += "middle";
         }
         else {
-            message += "higher";
+            messageValue += "higher";
         }
     }
     else if (betType == 5) {
-        message = "Mode: exact number bet on: ";
-        message += betValue;
+        messageType = "Mode: exact number";
+        messageValue += betValue;
     }
 
-    document.getElementById("betType").textContent = message;
+    document.getElementById("betType").textContent = messageType;
+    document.getElementById("betValue").textContent = messageValue;
 
 }
 
@@ -167,26 +169,31 @@ async function checkWin() {
     var betRange = values[1]
     var betNumber = values[2]
     var betAmount = values[3]
-    betBlock = "1D1F45E"
-    const response = await fetch("https://polygon-mumbai.g.alchemy.com/v2/4YSvn6vwg5ZTIx9IV6YVKS3IiJakB-o9", {
-        method: 'POST',
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type': 'application/json'
-        // },
-        body: `{
-            "jsonrpc":"2.0",
-            "method":"eth_getBlockByNumber",
-            "params":["0x${betBlock}", true],
-            "id":0
-            }`,
-    });
+    if (betAmount == 0) {
+        document.getElementById("checkWin").textContent = "You dont have an open bet";
+    }
+    else {
+        betBlock = "1D1F45E"
+        const response = await fetch("https://polygon-mumbai.g.alchemy.com/v2/4YSvn6vwg5ZTIx9IV6YVKS3IiJakB-o9", {
+            method: 'POST',
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json'
+            // },
+            body: `{
+                "jsonrpc":"2.0",
+                "method":"eth_getBlockByNumber",
+                "params":["0x${betBlock}", true],
+                "id":0
+                }`,
+        });
 
-    const json = await response.json();
-    var hash = json["result"]["hash"]
-    console.log(hash)
+        const json = await response.json();
+        var hash = json["result"]["hash"]
+        console.log(hash)
 
-    keccak = await bundle.getKeccakHash(hash);
-    console.log(keccak)
+        keccak = await bundle.getKeccakHash(hash);
+        console.log(keccak)
+    }
 }
 
