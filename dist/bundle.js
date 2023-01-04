@@ -252,17 +252,29 @@ async function claim() {
 
 const hexToDecimal = hex => parseInt(hex, 16);
 
-async function checkWin() {
+async function getInfosOfBet() {
     if (typeof window.ethereum !== "undefined") {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
         const my_address = ethereum.selectedAddress;
         const contract = new ethers.Contract(address, abi, signer)
         try {
-            //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
-            var block = await contract.bet_range(my_address);
+            var block = await contract.block_numbers(my_address);
             block = hexToDecimal(block["_hex"]);
+            var bet_range = await contract.bet_range(my_address);
+            bet_range = hexToDecimal(bet_range["_hex"]);
+            var bet_number = await contract.bet_numbers(my_address);
+            bet_number = hexToDecimal(bet_number["_hex"]);
+            var bet_value = await contract.bet_values(my_address);
+            bet_value = hexToDecimal(bet_value["_hex"]);
+
+
             console.log(block)
+            console.log(bet_range)
+            console.log(bet_number)
+            console.log(bet_value)
+
+            return [block, bet_range, bet_number, bet_value];
 
         } catch (error) {
             console.log(error);
@@ -272,7 +284,7 @@ async function checkWin() {
 }
 
 module.exports = {
-    connect, bet, claim, checkWin,
+    connect, bet, claim, getInfosOfBet,
 };
 
 },{"./data":1,"console":140,"ethers":159,"util":197}],3:[function(require,module,exports){

@@ -154,3 +154,15 @@ function getRange() {
         return 0;
     }
 }
+
+async function checkWin() {
+    document.getElementById("checkWin").textContent = "wait, I'm looking if you won";
+    var values = await bundle.getInfosOfBet();
+    console.log(values)
+    var betBlock = values[0]
+    var betRange = values[1]
+    var betNumber = values[2]
+    var betAmount = values[3]
+
+
+}
