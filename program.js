@@ -1,4 +1,5 @@
 const { stringify } = require("querystring");
+import { Network, Alchemy } from "alchemy-sdk";
 
 var betType = 0;
 var betValue = 0;
@@ -164,5 +165,8 @@ async function checkWin() {
     var betNumber = values[2]
     var betAmount = values[3]
 
+    //get block hash
+
 
 }
+
