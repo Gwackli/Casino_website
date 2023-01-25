@@ -1,0 +1,35 @@
+body {
+    background-color: #f5f5f5;
+    /* Eine moderne Hintergrundfarbe */
+    font-family: Arial, sans-serif;
+    /* Eine moderne Schriftart */
+    text-align: center;
+    /* Zentriere den Text */
+}
+
+#connectButton,
+button {
+    background-color: #4CAF50;
+    /* Eine moderne Hintergrundfarbe für die Schaltflächen */
+    color: white;
+    /* Schriftfarbe auf Weiß setzen */
+    padding: 15px 32px;
+    /* Padding für die Schaltflächen */
+    text-align: center;
+    /* Zentriere den Text in den Schaltflächen */
+    text-decoration: none;
+    /* Entferne Unterstreichungen */
+    display: inline-block;
+    /* Verwende inline-block, damit die Schaltflächen nebeneinander angezeigt werden */
+    font-size: 16px;
+    /* Schriftgröße der Schaltflächen */
+    margin: 4px 2px;
+    /* Abstand zwischen den Schaltflächen */
+    cursor: pointer;
+    /* Zeige einen Zeiger an, wenn man mit der Maus über die Schaltflächen fährt */
+}
+
+img {
+    max-width: 100%;
+    /* Verhindere, dass das Bild die Seite sprengt */
+}

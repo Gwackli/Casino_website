@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
-<body bgcolor="grey">
+<body>
     <script src="./dist/bundle.js"></script>
     <script src="program.js"></script>
     <script type="module" src="alchemyTest.js"></script>
@@ -20,23 +21,64 @@
 
     <br>Click on a field to select this bet</br>
 
-    <img src="roulette_brett.jpeg" alt="Workplace" usemap="#workmap">
+    <img src="table.png" alt="Workplace" usemap="#workmap">
     <map name="workmap">
-        <area shape="rect" coords="490,206,549,234" onclick="blackOrRed(1)"> <!-- rote Fläche-->
-        <area shape="rect" coords="552,206,610,234" onclick="blackOrRed(0)"> <!-- schwarze Fläche-->
+        <area shape="rect" coords="502,582,657,658" onclick="blackOrRed(1)"> <!-- rote Fläche-->
+        <area shape="rect" coords="662,582,817,658" onclick="blackOrRed(0)"> <!-- schwarze Fläche-->
 
-        <area shape="rect" coords="367,206,426,234" onclick="lowerOrHigher(0)"> <!-- lower Fläche-->
-        <area shape="rect" coords="676,206,733,234" onclick="lowerOrHigher(1)"> <!-- higher Fläche-->
+        <area shape="rect" coords="182,582,338,658" onclick="lowerOrHigher(0)"> <!-- lower Fläche-->
+        <area shape="rect" coords="982,582,1138,658" onclick="lowerOrHigher(1)"> <!-- higher Fläche-->
 
-        <area shape="rect" coords="614,206,672,234" onclick="oddOrEven(0)"> <!-- odd Fläche-->
-        <area shape="rect" coords="429,206,487,234" onclick="oddOrEven(1)"> <!-- even Fläche-->
+        <area shape="rect" coords="822,582,978,658" onclick="oddOrEven(0)"> <!-- odd Fläche-->
+        <area shape="rect" coords="342,582,497,658" onclick="oddOrEven(1)"> <!-- even Fläche-->
 
-        <area shape="rect" coords="367,176,487,203" onclick="lowerMiddleHigher(0)"> <!-- lower Fläche-->
-        <area shape="rect" coords="490,176,610,203" onclick="lowerMiddleHigher(1)"> <!-- middle Fläche-->
-        <area shape="rect" coords="614,176,734,203" onclick="lowerMiddleHigher(2)"> <!-- higher Fläche-->
+        <area shape="rect" coords="182,502,497,577" onclick="lowerMiddleHigher(0)"> <!-- lower Fläche-->
+        <area shape="rect" coords="502,502,817,577" onclick="lowerMiddleHigher(1)"> <!-- middle Fläche-->
+        <area shape="rect" coords="822,502,1138,577" onclick="lowerMiddleHigher(2)"> <!-- higher Fläche-->
 
-        <area shape="rect" coords="367,38,395,81" onclick="exactNumber(3)"> <!-- 3-->
-        <area shape="rect" coords="398,38,426,81" onclick="exactNumber(6)"> <!-- 6-->
+        <area shape="rect" coords="1142,142,1218,257" onclick="twoToOne(0)"> <!-- 2to1 top-->
+        <area shape="rect" coords="1142,262,1218,377" onclick="twoToOne(1)"> <!-- 2to1 middle-->
+        <area shape="rect" coords="1142,382,1218,497" onclick="twoToOne(2)"> <!-- 2to1 bottom-->
+
+
+        <area shape="rect" coords="182, 141,257,  257" onclick="exactNumber(1)"> <!-- 1-->
+        <area shape="rect" coords="262, 141,337,  257" onclick="exactNumber(4)"> <!-- 4-->
+        <area shape="rect" coords="342, 141,417,  257" onclick="exactNumber(7)"> <!-- 7-->
+        <area shape="rect" coords="422, 141,497,  257" onclick="exactNumber(10)"> <!-- 10-->
+        <area shape="rect" coords="502, 141,577,  257" onclick="exactNumber(13)"> <!-- 13-->
+        <area shape="rect" coords="582, 141,657,  257" onclick="exactNumber(16)"> <!-- 16-->
+        <area shape="rect" coords="662, 141,737,  257" onclick="exactNumber(19)"> <!-- 19-->
+        <area shape="rect" coords="742, 141,817,  257" onclick="exactNumber(22)"> <!-- 22-->
+        <area shape="rect" coords="822, 141,897,  257" onclick="exactNumber(25)"> <!-- 25-->
+        <area shape="rect" coords="902, 141,977,  257" onclick="exactNumber(28)"> <!-- 28-->
+        <area shape="rect" coords="982, 141,1057, 257" onclick="exactNumber(31)"> <!-- 31-->
+        <area shape="rect" coords="1062,141,1137, 257" onclick="exactNumber(34)"> <!-- 34-->
+
+        <area shape="rect" coords="182, 261,257, 377" onclick="exactNumber(2)"> <!-- 2 -->
+        <area shape="rect" coords="262, 261,337, 377" onclick="exactNumber(5)"> <!-- 5 -->
+        <area shape="rect" coords="342, 261,417, 377" onclick="exactNumber(8)"> <!-- 8 -->
+        <area shape="rect" coords="422, 261,497, 377" onclick="exactNumber(11)"> <!-- 11-->
+        <area shape="rect" coords="502, 261,577, 377" onclick="exactNumber(14)"> <!-- 14-->
+        <area shape="rect" coords="582, 261,657, 377" onclick="exactNumber(17)"> <!-- 17-->
+        <area shape="rect" coords="662, 261,737, 377" onclick="exactNumber(20)"> <!-- 20-->
+        <area shape="rect" coords="742, 261,817, 377" onclick="exactNumber(23)"> <!-- 23-->
+        <area shape="rect" coords="822, 261,897, 377" onclick="exactNumber(26)"> <!-- 26-->
+        <area shape="rect" coords="902, 261,977, 377" onclick="exactNumber(29)"> <!-- 29-->
+        <area shape="rect" coords="982, 261,1057,377" onclick="exactNumber(32)"> <!-- 32-->
+        <area shape="rect" coords="1062,261,1137,377" onclick="exactNumber(35)"> <!-- 35-->
+
+        <area shape="rect" coords="182, 382,257, 497" onclick="exactNumber(3)"> <!-- 3 -->
+        <area shape="rect" coords="262, 382,337, 497" onclick="exactNumber(6)"> <!-- 6 -->
+        <area shape="rect" coords="342, 382,417, 497" onclick="exactNumber(9)"> <!-- 9 -->
+        <area shape="rect" coords="422, 382,497, 497" onclick="exactNumber(12)"> <!-- 12-->
+        <area shape="rect" coords="502, 382,577, 497" onclick="exactNumber(15)"> <!-- 15-->
+        <area shape="rect" coords="582, 382,657, 497" onclick="exactNumber(18)"> <!-- 18-->
+        <area shape="rect" coords="662, 382,737, 497" onclick="exactNumber(21)"> <!-- 21-->
+        <area shape="rect" coords="742, 382,817, 497" onclick="exactNumber(24)"> <!-- 24-->
+        <area shape="rect" coords="822, 382,897, 497" onclick="exactNumber(27)"> <!-- 27-->
+        <area shape="rect" coords="902, 382,977, 497" onclick="exactNumber(30)"> <!-- 30-->
+        <area shape="rect" coords="982, 382,1057,497" onclick="exactNumber(33)"> <!-- 33-->
+        <area shape="rect" coords="1062,382,1137,497" onclick="exactNumber(36)"> <!-- 36-->
     </map>
 
 

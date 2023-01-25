@@ -9,6 +9,7 @@ var betValue = 0;
 3: odd(1) or even(2)
 4: lower(1) or middle(2) or higher(3)
 5: exact number (1-36)
+6: two to one (0 top; 1 middle; 2 bottom)
 */
 var address = "0x0000000000000000000000000000000000000000"
 
@@ -60,6 +61,18 @@ function updateBet() {
     else if (betType == 5) {
         messageType = "Mode: exact number";
         messageValue += betValue;
+    }
+    else if (betType == 6) {
+        messageType = "Mode: 2 to 1";
+        if (betValue == 0) {
+            messageValue += "oberste Reihe";
+        }
+        else if (betValue == 1) {
+            messageValue += "mittlere Reihe";
+        }
+        else if (betValue == 2) {
+            messageValue += "unterste Reihe";
+        }
     }
 
     document.getElementById("betType").textContent = messageType;
@@ -130,6 +143,12 @@ function exactNumber(num) {
     updateBet();
 }
 
+function twoToOne(num) {
+    betType = 6;
+    betValue = num;
+    updateBet();
+}
+
 
 function random(num) {
     if (num == 0) { //always
@@ -148,7 +167,7 @@ function getRange() {
     if (betType >= 1 && betType <= 3) {
         return 2;
     }
-    else if (betType == 4) {
+    else if (betType == 4 || betType == 6) {
         return 3;
     }
     else if (betType == 5) {
