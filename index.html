@@ -10,9 +10,12 @@
 </head>
 
 <body>
+    <!-- einbinden aller Skripte -->
     <script src="./dist/bundle.js"></script>
     <script src="program.js"></script>
     <script type="module" src="alchemyTest.js"></script>
+
+    <!-- Deffinieren der Knöpfe -->
     <button id="connectButton" onclick="bundle.connect()">Connect</button>
     <br></br>
     <button id="alwaysWin" onclick="random(0)">alwaysWin</button>
@@ -21,6 +24,7 @@
 
     <br>Click on a field to select this bet</br>
 
+    <!-- Einfügen des Bildes des Roulettetischs, und definition welche Region für welche Wette bestimmt ist -->
     <img src="table.png" alt="Workplace" usemap="#workmap">
     <map name="workmap">
         <area shape="rect" coords="502,582,657,658" onclick="blackOrRed(1)"> <!-- rote Fläche-->
@@ -81,17 +85,24 @@
         <area shape="rect" coords="1062,382,1137,497" onclick="exactNumber(36)"> <!-- 36-->
     </map>
 
-
+    <!-- weitere Textfelder zur Angabe was ausgewählt wurde -->
     <p id="betType">Select a bet</p>
     <p id="betValue"></p>
+
+    <!-- Eingabe des Wettbetrages -->
     <br>
     Amount you want to bet in Matic:
     <input type="number" id="amount" name="Amount in Matic" min="1" max="10" step="0.1" value="1">
+
+    <!-- Button um die Wette zu erstellen -->
     <button onclick="bundle.bet()">bet</button>
     </br>
     <br></br>
+    <!-- Button um zu überprüfen ob man gewonnen hat--> -->
     <button onclick="checkWin()">Did I win?</button>
     <p id="checkWin">I dont know</p>
+
+    <!-- claim Funktion -->
     <button onclick="bundle.claim()">claim!</button>
 </body>
 

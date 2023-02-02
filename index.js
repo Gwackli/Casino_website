@@ -6,14 +6,16 @@ const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 var abi = require('./data');
 
-
+// Funktion um zum Metamask zu verbinden
 async function connect() {
     if (typeof window.ethereum !== "undefined") {
         await window.ethereum.request({ method: "eth_requestAccounts" })
+        // Wenn verbunden, dann Text zu "connected" ändern
         document.getElementById("connectButton").textContent = "Connected"
     }
 }
 
+// Das erstellen der Wette
 async function bet() {
     if (typeof window.ethereum !== "undefined") {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -21,17 +23,18 @@ async function bet() {
         console.log(address)
         const contract = new ethers.Contract(address, abi, signer)
 
+        // Range anfragen vom Bettype
         const range = getRange()
-        //Only if there is a bet setting
+        //Nur wenn eine Einstellung für eine Wette getroffen wurde
         if (range != 0) {
             console.log(range);
             console.log(betValue);
+            // Wettbetrag auslesen
             var amount = document.getElementById("amount").value;
             console.log(amount);
-            //amount = "1";
             try {
-                //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
                 // number, range
+                // Das effektive erstellen der Wette als Transaktion und an Metamask übertragen
                 await contract.place_bet(betValue, range, { value: ethers.utils.parseEther(amount) });
             } catch (error) {
                 console.log(error);
@@ -41,13 +44,15 @@ async function bet() {
     }
 }
 
+
+// Funktion um den Gewinn abzuholen
 async function claim() {
     if (typeof window.ethereum !== "undefined") {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
         const contract = new ethers.Contract(address, abi, signer)
         try {
-            //await contract.send_win("0x57e37d04D3FdDF41987C518F5E5593Cf70309362", "1000000000000000000");
+            // Aufrufen der Smart-Contract funktion
             await contract.claim();
         } catch (error) {
             console.log(error);
@@ -56,6 +61,8 @@ async function claim() {
     }
 }
 
+// Funktion um die letzte Wette auszulesen
+// Gibt die gespeicherten WErte zurück: blocknummer, betRange, betNumber, betValue
 const hexToDecimal = hex => parseInt(hex, 16);
 
 async function getInfosOfBet() {
@@ -89,12 +96,15 @@ async function getInfosOfBet() {
     }
 }
 
+// Funktion um den Keccak256 Hashing algorithumus anzuewenden
 async function getKeccakHash(block_hash) {
     var pack = ethers.utils.solidityPack(["string"], [block_hash]);
     var keccak = ethers.utils.solidityKeccak256(["string"], [pack]);
     return keccak;
 }
 
+// wird für bundle.js verwendet
+// welche funktionen gebundlet werden müssen
 module.exports = {
     connect, bet, claim, getInfosOfBet, getKeccakHash,
 };

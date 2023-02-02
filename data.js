@@ -1,3 +1,5 @@
+//ABI des Smart-Contracts
+
 module.exports = [
     {
         "inputs": [],

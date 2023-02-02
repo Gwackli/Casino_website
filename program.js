@@ -11,8 +11,12 @@ var betValue = 0;
 5: exact number (1-36)
 6: two to one (0 top; 1 middle; 2 bottom)
 */
+
+// Die Adresse des Smart-Contracts
 var address = "0x0000000000000000000000000000000000000000"
 
+
+// Funktion um die Anzeige unter dem Bild zu ändern auf was gewettet wurde
 function updateBet() {
     messageType = "";
     messageValue = "Bet on: ";
@@ -75,12 +79,13 @@ function updateBet() {
         }
     }
 
+    // Das effektive ändern des Elements im HTML
     document.getElementById("betType").textContent = messageType;
     document.getElementById("betValue").textContent = messageValue;
 
 }
 
-
+// Funktionen, welche aufgerufen werden vom Bild um die Wettart und die effektive Wette
 function lowerOrHigher(higher) {
     betType = 1;
     if (higher == 0) {
@@ -150,6 +155,7 @@ function twoToOne(num) {
 }
 
 
+// Funktion aufgerufen wird um den Smart-Contract zu ändern. Von always-win zu random oder offline ändern
 function random(num) {
     if (num == 0) { //always
         address = "0x156B03A252689861E3aC9307f359608720DBF409"
@@ -163,6 +169,7 @@ function random(num) {
     console.log(address)
 }
 
+// Funktion welche zurückgibt was die Range einer gewissen Wette ist
 function getRange() {
     if (betType >= 1 && betType <= 3) {
         return 2;
@@ -179,7 +186,8 @@ function getRange() {
 }
 
 
-
+// Funktioniert noch nicht
+// Funktion um zu überprüfen, ob die letzte Wette gewonnen hat oder nicht
 async function checkWin() {
     document.getElementById("checkWin").textContent = "wait, I'm looking if you won";
     var values = await bundle.getInfosOfBet();
