@@ -38,6 +38,8 @@ yarn browserify index.js --standalone bundle -o ./dist/bundle.js
 Alle Funktionen, welche mit der Blockchain interagieren müssen
 #### program.js
 Alle Funktionen, welche nicht mit der Blockchain interagieren müssen
+#### data.js
+Alle Daten wie momentan nur die ABI des Smart-Contracts
 #### index.html
 Das komplette HTML der Website
 #### index.css
