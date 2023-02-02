@@ -36,6 +36,7 @@ async function bet() {
                 // number, range
                 // Das effektive erstellen der Wette als Transaktion und an Metamask übertragen
                 await contract.place_bet(betValue, range, { value: ethers.utils.parseEther(amount) });
+                document.getElementById("checkWin").textContent = "Du musst Claim drücken um zu wissen ob du gewonnen hast (zuerst ein paar Sekunden warten";
             } catch (error) {
                 console.log(error);
             }
@@ -56,6 +57,7 @@ async function claim() {
             await contract.claim();
         } catch (error) {
             console.log(error);
+            document.getElementById("checkWin").textContent = "Du hast leider nicht gewonnen";
         }
 
     }
